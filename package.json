@@ -18,6 +18,7 @@
   "homepage": "https://github.com/archetype-api/archetype-api#readme",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4"
   }
 }
