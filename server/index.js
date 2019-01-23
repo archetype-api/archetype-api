@@ -1,7 +1,9 @@
 const express = require("express");
 const db = require("../db/db");
+const { json, urlencoded } = require("body-parser");
 
 const app = express();
+app.use(json());
 
 app.get("/api/test", (req, res) => {
   res.status(200).send({
