@@ -3,6 +3,7 @@ const db = require('../db/db');
 const { json } = require('body-parser');
 const dual = require('./dual');
 const single = require('./single');
+const drama = require('./drama');
 
 const app = express();
 app.use(json());
@@ -36,6 +37,12 @@ app.get('/api/types/shadow/:shadow', single.byShadow);
 // Two layer queries || DUAL QUERIES
 
 app.get('/api/types/dual', dual.combineTwo);
+
+// DRAMA QUERIES
+
+app.get('/api/drama', drama.allDrama);
+app.get('/api/drama/common', drama.commonDrama);
+app.get('/api/drama/uncommon', drama.uncommonDrama);
 
 const port = 3001;
 
