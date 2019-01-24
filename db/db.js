@@ -9,7 +9,8 @@ const types = [
 		shadow: 'end justify the means',
 		name: 'warrior',
 		alias: 'hero',
-		role: 'student'
+		role: 'student',
+		color: 'red'
 	},
 	{
 		archetype_id: 2,
@@ -19,7 +20,8 @@ const types = [
 		shadow: 'getting lost',
 		name: 'explorer',
 		alias: 'wanderer',
-		role: 'outlier'
+		role: 'outlier',
+		color: 'orangered'
 	},
 	{
 		archetype_id: 3,
@@ -29,7 +31,8 @@ const types = [
 		shadow: 'critic (nothing ever good enough)',
 		name: 'creator',
 		alias: 'artist',
-		role: 'outlier'
+		role: 'outlier',
+		color: 'orange'
 	},
 	{
 		archetype_id: 4,
@@ -39,7 +42,8 @@ const types = [
 		shadow: 'selfishness',
 		name: 'lover',
 		alias: 'none',
-		role: 'outlier'
+		role: 'outlier',
+		color: 'gold'
 	},
 	{
 		archetype_id: 5,
@@ -49,7 +53,8 @@ const types = [
 		shadow: 'indiffernce/cruelty',
 		name: 'rebel',
 		alias: 'outlaw',
-		role: 'outlier'
+		role: 'outlier',
+		color: 'yellow'
 	},
 	{
 		archetype_id: 6,
@@ -59,7 +64,8 @@ const types = [
 		shadow: 'believing/becoming the lie',
 		name: 'trickster',
 		alias: 'jester',
-		role: 'student'
+		role: 'student',
+		color: 'yellowgreen'
 	},
 	{
 		archetype_id: 7,
@@ -69,7 +75,8 @@ const types = [
 		shadow: 'arrogance',
 		name: 'mentor',
 		alias: 'sage',
-		role: 'master'
+		role: 'master',
+		color: 'green'
 	},
 	{
 		archetype_id: 8,
@@ -79,7 +86,8 @@ const types = [
 		shadow: 'abuse of power',
 		name: 'magician',
 		alias: 'wizard',
-		role: 'master'
+		role: 'master',
+		color: 'cadetblue'
 	},
 	{
 		archetype_id: 9,
@@ -89,7 +97,8 @@ const types = [
 		shadow: 'tyrant',
 		name: 'ruler',
 		alias: 'king/father',
-		role: 'master'
+		role: 'master',
+		color: 'blue'
 	},
 	{
 		archetype_id: 10,
@@ -99,7 +108,8 @@ const types = [
 		shadow: 'martyr',
 		name: 'caregiver',
 		alias: 'queen/mother',
-		role: 'master'
+		role: 'master',
+		color: 'blueviolet'
 	},
 	{
 		archetype_id: 11,
@@ -109,7 +119,8 @@ const types = [
 		shadow: 'refusal of responsibility',
 		name: 'innocent',
 		alias: 'none',
-		role: 'student'
+		role: 'student',
+		color: 'indigo'
 	},
 	{
 		archetype_id: 12,
@@ -119,7 +130,8 @@ const types = [
 		shadow: 'mediocrity',
 		name: 'orphan',
 		alias: 'everyman',
-		role: 'student'
+		role: 'student',
+		color: 'purple'
 	}
 ];
 
