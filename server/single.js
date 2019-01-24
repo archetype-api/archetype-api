@@ -9,24 +9,32 @@ module.exports = {
 	},
 	byName: (req, res) => {
 		const name = req.params.name.toLowerCase();
-		const nameQuery = db.types.filter((e, i) => {
-			return e.name == name;
-		});
+		const nameQuery = db.types.filter((e) => {
+			return e.name.includes(name) || e.alias.includes(name);
+		})[0];
+		const allyQuery = 'TODO';
+		const opponentDriveQuery = db.types.filter(
+			(e) => e.drive == nameQuery.drive
+		);
+		const opponentAspectQuery = db.types.filter(
+			(e) => e.aspect == nameQuery.aspect
+		);
+		const opponentMethodQuery = db.types.filter(
+			(e) => e.method == nameQuery.method
+		);
+		const opponentRoleQuery = db.types.filter((e) => e.role == nameQuery.role);
+		const opponents = {
+			driveOpponents: opponentDriveQuery,
+			aspectOpponents: opponentAspectQuery,
+			methodOpponents: opponentMethodQuery,
+			roleOpponents: opponentRoleQuery
+		};
+		const allies = {};
+		const result = { hero: nameQuery, opponents: opponents, allies: allies };
 		res.status(200).send({
 			success: 'true',
 			message: `archetype of ${name} retrieved`,
-			types: nameQuery
-		});
-	},
-	byAlias: (req, res) => {
-		const alias = req.params.alias.toLowerCase();
-		const aliasQuery = db.types.filter((e, i) => {
-			return e.alias == alias;
-		});
-		res.status(200).send({
-			success: 'true',
-			message: `archetype of ${alias} retrieved`,
-			types: aliasQuery
+			types: result
 		});
 	},
 	byRole: (req, res) => {
