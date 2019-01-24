@@ -23,8 +23,6 @@ app.get('/api/types', single.allTypes);
 
 app.get('/api/types/name/:name', single.byName);
 
-app.get('/api/types/alias/:alias', single.byAlias);
-
 app.get('/api/types/role/:role', single.byRole);
 
 app.get('/api/types/aspect/:aspect', single.byAspect);
