@@ -12,7 +12,15 @@ module.exports = {
 		const nameQuery = db.types.filter((e) => {
 			return e.name.includes(name) || e.alias.includes(name);
 		})[0];
-		const allyQuery = 'TODO';
+		const allyStudentQuery = db.types.filter(
+			(e) => e.role == 'student' && e.drive !== nameQuery.drive
+		);
+		const allyOutlierQuery = db.types.filter(
+			(e) => e.role == 'outlier' && e.drive !== nameQuery.drive
+		);
+		const allyMasterQuery = db.types.filter(
+			(e) => e.role == 'master' && e.drive !== nameQuery.drive
+		);
 		const opponentDriveQuery = db.types.filter(
 			(e) => e.drive == nameQuery.drive
 		);
@@ -29,7 +37,11 @@ module.exports = {
 			methodOpponents: opponentMethodQuery,
 			roleOpponents: opponentRoleQuery
 		};
-		const allies = {};
+		const allies = {
+			studentAllies: allyStudentQuery,
+			outlierAllies: allyOutlierQuery,
+			masterAllies: allyMasterQuery
+		};
 		const result = { hero: nameQuery, opponents: opponents, allies: allies };
 		res.status(200).send({
 			success: 'true',
