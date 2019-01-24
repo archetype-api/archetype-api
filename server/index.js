@@ -3,6 +3,7 @@ const db = require('../db/db');
 const { json } = require('body-parser');
 const dual = require('./dual');
 const single = require('./single');
+const compare = require('./compare');
 const drama = require('./drama');
 
 const app = express();
@@ -37,6 +38,10 @@ app.get('/api/types/shadow/:shadow', single.byShadow);
 // Two layer queries || DUAL QUERIES
 
 app.get('/api/types/dual', dual.combineTwo);
+
+//Two layer queries || RETURN COMBO
+
+app.get('/api/types/compare', compare.compareTwo);
 
 // DRAMA QUERIES
 
