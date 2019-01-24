@@ -24,7 +24,7 @@ app.get("/api/types", (req, res) => {
 app.get("/api/types/name/:name", (req, res) => {
   const name = req.params.name.toLowerCase();
   const nameQuery = db.types.filter((e, i) => {
-    return e.name == name;
+    return e.name == name || e.alias == name;
   });
   res.status(200).send({
     success: "true",
