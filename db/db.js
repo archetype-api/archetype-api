@@ -150,6 +150,13 @@ const wheel = {
 	12: { 2: 1, 4: 2, 6: 3, 8: 10, 10: 11 }
 };
 
+const allyMatrix = {
+	'leave a mark': 'order',
+	order: 'leave a mark',
+	'connect to others': 'spiritual journey',
+	'spiritual journey': 'connect to others'
+};
+
 const drama = [
 	{
 		drama_id: 1,
@@ -686,4 +693,4 @@ const drama = [
 	}
 ];
 
-module.exports = { test, types, wheel, drama };
+module.exports = { test, types, wheel, drama, allyMatrix };

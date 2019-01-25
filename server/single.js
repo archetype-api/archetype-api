@@ -38,9 +38,28 @@ module.exports = {
 			roleOpponents: opponentRoleQuery
 		};
 		const allies = {
-			studentAllies: allyStudentQuery,
-			outlierAllies: allyOutlierQuery,
-			masterAllies: allyMasterQuery
+			opposing: {
+				studentAllies: allyStudentQuery.filter(
+					(e) => e.drive == db.allyMatrix[nameQuery.drive]
+				),
+				outlierAllies: allyOutlierQuery.filter(
+					(e) => e.drive == db.allyMatrix[nameQuery.drive]
+				),
+				masterAllies: allyMasterQuery.filter(
+					(e) => e.drive == db.allyMatrix[nameQuery.drive]
+				)
+			},
+			adjacent: {
+				studentAllies: allyStudentQuery.filter(
+					(e) => e.drive !== db.allyMatrix[nameQuery.drive]
+				),
+				outlierAllies: allyOutlierQuery.filter(
+					(e) => e.drive !== db.allyMatrix[nameQuery.drive]
+				),
+				masterAllies: allyMasterQuery.filter(
+					(e) => e.drive !== db.allyMatrix[nameQuery.drive]
+				)
+			}
 		};
 		const result = { hero: nameQuery, opponents: opponents, allies: allies };
 		res.status(200).send({
