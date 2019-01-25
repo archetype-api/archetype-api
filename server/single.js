@@ -9,24 +9,63 @@ module.exports = {
 	},
 	byName: (req, res) => {
 		const name = req.params.name.toLowerCase();
-		const nameQuery = db.types.filter((e, i) => {
-			return e.name == name;
-		});
+		const nameQuery = db.types.filter((e) => {
+			return e.name.includes(name) || e.alias.includes(name);
+		})[0];
+		const allyStudentQuery = db.types.filter(
+			(e) => e.role == 'student' && e.drive !== nameQuery.drive
+		);
+		const allyOutlierQuery = db.types.filter(
+			(e) => e.role == 'outlier' && e.drive !== nameQuery.drive
+		);
+		const allyMasterQuery = db.types.filter(
+			(e) => e.role == 'master' && e.drive !== nameQuery.drive
+		);
+		const opponentDriveQuery = db.types.filter(
+			(e) => e.drive == nameQuery.drive
+		);
+		const opponentAspectQuery = db.types.filter(
+			(e) => e.aspect == nameQuery.aspect
+		);
+		const opponentMethodQuery = db.types.filter(
+			(e) => e.method == nameQuery.method
+		);
+		const opponentRoleQuery = db.types.filter((e) => e.role == nameQuery.role);
+		const opponents = {
+			driveOpponents: opponentDriveQuery,
+			aspectOpponents: opponentAspectQuery,
+			methodOpponents: opponentMethodQuery,
+			roleOpponents: opponentRoleQuery
+		};
+		const allies = {
+			opposing: {
+				studentAllies: allyStudentQuery.filter(
+					(e) => e.drive == db.allyMatrix[nameQuery.drive]
+				),
+				outlierAllies: allyOutlierQuery.filter(
+					(e) => e.drive == db.allyMatrix[nameQuery.drive]
+				),
+				masterAllies: allyMasterQuery.filter(
+					(e) => e.drive == db.allyMatrix[nameQuery.drive]
+				)
+			},
+			adjacent: {
+				studentAllies: allyStudentQuery.filter(
+					(e) => e.drive !== db.allyMatrix[nameQuery.drive]
+				),
+				outlierAllies: allyOutlierQuery.filter(
+					(e) => e.drive !== db.allyMatrix[nameQuery.drive]
+				),
+				masterAllies: allyMasterQuery.filter(
+					(e) => e.drive !== db.allyMatrix[nameQuery.drive]
+				)
+			}
+		};
+		const result = { hero: nameQuery, opponents: opponents, allies: allies };
 		res.status(200).send({
 			success: 'true',
 			message: `archetype of ${name} retrieved`,
-			types: nameQuery
-		});
-	},
-	byAlias: (req, res) => {
-		const alias = req.params.alias.toLowerCase();
-		const aliasQuery = db.types.filter((e, i) => {
-			return e.alias == alias;
-		});
-		res.status(200).send({
-			success: 'true',
-			message: `archetype of ${alias} retrieved`,
-			types: aliasQuery
+			types: result
 		});
 	},
 	byRole: (req, res) => {
