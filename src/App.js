@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from "./components/layout/Container";
 import Nav from "./components/layout/Nav";
 import ReactDOM from "react-dom";
+import "./styles/App.css";
 
 class App extends Component {
   render() {
